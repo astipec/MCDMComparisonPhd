@@ -40,4 +40,4 @@ def GenerateDataFrame():
     AlternativesAll.to_csv(file_name)
 
     absolute_path = os.path.abspath(file_name)
-    print(f'Dataset is written to CSV file successfully at:\n{absolute_path}')
+    print(f'Dataset is saved to CSV file successfully at:\n{absolute_path}')
