@@ -3,6 +3,14 @@ import pandas as pd
 
 from GenAllAlternatives import GenerateDataFrame
 from DEX_RANKING import GetDEXRankingResults
+from AHP import AHPReplaceValues
+from AHP import GetAHPRankingResults
+from TOPSIS import TOPSISReplaceValues
+from TOPSIS import GetTOPSISRankingResults
+from PROMETHEE import PROMETHEEReplaceValues
+from PROMETHEE import GetPROMETHEERankingResults
+from PAPRIKA import PAPRIKAReplaceValues
+from PAPRIKA import GetPAPRIKARankingResults
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -12,6 +20,10 @@ def main_menu():
     print("Select option:")
     print("1. Generate dataset with all possible combinations")
     print("2. DEX Ranking (baseline)")
+    print("3. AHP Ranking")
+    print("4. TOPSIS Ranking")
+    print("5. PROMETHEE II Ranking")
+    print("6. PAPRIKA Ranking")
     print("--------------------------------------------------")
     print("0. Exit program\n")
 
@@ -84,6 +96,130 @@ def option_2():  #DEX Ranking
         else:
             print("Invalid choice, try again.")
 
+def option_3():  #AHP Ranking
+    while True:
+        clear_screen()
+        print("\nAHP Ranking\n")
+        print("Select option:")
+        print("1. Rank dataset using AHP method\n")
+        print("--------------------------------------------------")
+        print("0. Return to main menu\n")
+
+        choice = input("Insert option number: ")
+
+        if choice == "1":
+            file_path = './Results/TotalSKPData.csv'
+            results_path = './Results/AHP_Results.csv'
+            absolute_path = os.path.abspath(results_path)
+            os.makedirs(os.path.dirname(results_path), exist_ok=True)
+
+            AlternativesAHP = ImportCSVtoDataFrame(file_path)
+            AHPReplaced = AHPReplaceValues(AlternativesAHP)
+            AHPRanked = GetAHPRankingResults(AHPReplaced)
+
+            AHPRanked.to_csv(results_path, sep=';', index=True, header=True)
+
+            print("\nAHP ranking completed successfully.")
+            print(f'AHP ranking results are saved to CSV file successfully at:\n{absolute_path}')
+            input("\nPress enter")
+        elif choice == "0":
+            break
+        else:
+            print("Invalid choice, try again.")
+
+def option_4():  #TOPSIS Ranking
+    while True:
+        clear_screen()
+        print("\nTOPSIS Ranking\n")
+        print("Select option:")
+        print("1. Rank dataset using TOPSIS method\n")
+        print("--------------------------------------------------")
+        print("0. Return to main menu\n")
+
+        choice = input("Insert option number: ")
+
+        if choice == "1":
+            file_path = './Results/TotalSKPData.csv'
+            results_path = './Results/TOPSIS_Results.csv'
+            absolute_path = os.path.abspath(results_path)
+            os.makedirs(os.path.dirname(results_path), exist_ok=True)
+
+            AlternativesTOPSIS = ImportCSVtoDataFrame(file_path)
+            TOPSISReplaced = TOPSISReplaceValues(AlternativesTOPSIS)
+            TOPSISRanked = GetTOPSISRankingResults(TOPSISReplaced)
+
+            TOPSISRanked.to_csv(results_path, sep=';', index=True, header=True)
+
+            print("\nTOPSIS ranking completed successfully.")
+            print(f'TOPSIS ranking results are saved to CSV file successfully at:\n{absolute_path}')
+            input("\nPress enter")
+        elif choice == "0":
+            break
+        else:
+            print("Invalid choice, try again.")
+
+def option_5():  #PROMETHEE II Ranking
+    while True:
+        clear_screen()
+        print("\nPROMETHEE II Ranking\n")
+        print("Select option:")
+        print("1. Rank dataset using PROMETHEE II method\n")
+        print("--------------------------------------------------")
+        print("0. Return to main menu\n")
+
+        choice = input("Insert option number: ")
+
+        if choice == "1":
+            file_path = './Results/TotalSKPData.csv'
+            results_path = './Results/PROMETHEE_Results.csv'
+            absolute_path = os.path.abspath(results_path)
+            os.makedirs(os.path.dirname(results_path), exist_ok=True)
+
+            AlternativesPROMETHEE = ImportCSVtoDataFrame(file_path)
+            PROMETHEEReplaced = PROMETHEEReplaceValues(AlternativesPROMETHEE)
+            PROMETHEERanked = GetPROMETHEERankingResults(PROMETHEEReplaced)
+
+            PROMETHEERanked.to_csv(results_path, sep=';', index=True, header=True)
+
+            print("\nPROMETHEE ranking completed successfully.")
+            print(f'PROMETHEE ranking results are saved to CSV file successfully at:\n{absolute_path}')
+            input("\nPress enter")
+        elif choice == "0":
+            break
+        else:
+            print("Invalid choice, try again.")
+
+def option_6():  #PAPRIKA Ranking
+    while True:
+        clear_screen()
+        print("\nPAPRIKA Ranking\n")
+        print("Select option:")
+        print("1. Rank dataset using PAPRIKA method\n")
+        print("--------------------------------------------------")
+        print("0. Return to main menu\n")
+
+        choice = input("Insert option number: ")
+
+        if choice == "1":
+            file_path = './Results/TotalSKPData.csv'
+            results_path = './Results/PAPRIKA_Results.csv'
+            absolute_path = os.path.abspath(results_path)
+            os.makedirs(os.path.dirname(results_path), exist_ok=True)
+
+            AlternativesPAPRIKA = ImportCSVtoDataFrame(file_path)
+            PAPRIKAReplaced = PAPRIKAReplaceValues(AlternativesPAPRIKA)
+            PAPRIKARanked = GetPAPRIKARankingResults(PAPRIKAReplaced)
+
+            PAPRIKARanked.to_csv(results_path, sep=';', index=True, header=True)
+
+            print("\nPAPRIKA ranking completed successfully.")
+            print(f'PAPRIKA ranking results are saved to CSV file successfully at:\n{absolute_path}')
+            input("\nPress enter")
+        elif choice == "0":
+            break
+        else:
+            print("Invalid choice, try again.")
+
 def main():
     while True:
         clear_screen()
@@ -94,6 +230,14 @@ def main():
             option_1()
         elif choice == "2":
             option_2()
+        elif choice == "3":
+            option_3()
+        elif choice == "4":
+            option_4()
+        elif choice == "5":
+            option_5()
+        elif choice == "6":
+            option_6()
         elif choice == "0":
             break
         else:
