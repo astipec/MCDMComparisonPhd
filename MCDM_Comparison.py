@@ -2,6 +2,7 @@ import os
 import pandas as pd
 
 from GenAllAlternatives import GenerateDataFrame
+
 from DEX_RANKING import GetDEXRankingResults
 from AHP import AHPReplaceValues
 from AHP import GetAHPRankingResults
@@ -11,6 +12,8 @@ from PROMETHEE import PROMETHEEReplaceValues
 from PROMETHEE import GetPROMETHEERankingResults
 from PAPRIKA import PAPRIKAReplaceValues
 from PAPRIKA import GetPAPRIKARankingResults
+
+from Statistics import CalcCorrelations
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -24,6 +27,7 @@ def main_menu():
     print("4. TOPSIS Ranking")
     print("5. PROMETHEE II Ranking")
     print("6. PAPRIKA Ranking")
+    print("7. Calculate comparison statistics")
     print("--------------------------------------------------")
     print("0. Exit program\n")
 
@@ -71,7 +75,7 @@ def option_2():  #DEX Ranking
         clear_screen()
         print("\nDEX Ranking (baseline)\n")
         print("Select option:")
-        print("1. Rank dataset using DEX method\n")
+        print("1. Rank dataset using DEX method")
         print("--------------------------------------------------")
         print("0. Return to main menu\n")
 
@@ -101,7 +105,7 @@ def option_3():  #AHP Ranking
         clear_screen()
         print("\nAHP Ranking\n")
         print("Select option:")
-        print("1. Rank dataset using AHP method\n")
+        print("1. Rank dataset using AHP method")
         print("--------------------------------------------------")
         print("0. Return to main menu\n")
 
@@ -132,7 +136,7 @@ def option_4():  #TOPSIS Ranking
         clear_screen()
         print("\nTOPSIS Ranking\n")
         print("Select option:")
-        print("1. Rank dataset using TOPSIS method\n")
+        print("1. Rank dataset using TOPSIS method")
         print("--------------------------------------------------")
         print("0. Return to main menu\n")
 
@@ -163,7 +167,7 @@ def option_5():  #PROMETHEE II Ranking
         clear_screen()
         print("\nPROMETHEE II Ranking\n")
         print("Select option:")
-        print("1. Rank dataset using PROMETHEE II method\n")
+        print("1. Rank dataset using PROMETHEE II method")
         print("--------------------------------------------------")
         print("0. Return to main menu\n")
 
@@ -194,7 +198,7 @@ def option_6():  #PAPRIKA Ranking
         clear_screen()
         print("\nPAPRIKA Ranking\n")
         print("Select option:")
-        print("1. Rank dataset using PAPRIKA method\n")
+        print("1. Rank dataset using PAPRIKA method")
         print("--------------------------------------------------")
         print("0. Return to main menu\n")
 
@@ -220,6 +224,29 @@ def option_6():  #PAPRIKA Ranking
         else:
             print("Invalid choice, try again.")
 
+def option_7():  #Statistics
+    while True:
+        clear_screen()
+        print("\nCalculate comparison statistics")
+        print("All previous rankings are required for this step!!!")
+        print("Select option:")
+        print("1. Draw rankings of first 10 alternatives")
+        print("2. Calculate correlation coefficients (Spearman's, Pearson's, Kendall's)")
+        print("--------------------------------------------------")
+        print("0. Return to main menu\n")
+
+        choice = input("Insert option number: ")
+
+        if choice == "1":
+            print("\nWill be added.\n")
+        elif choice == "2":
+            CalcCorrelations()
+            input("\nPress enter")
+        elif choice == "0":
+            break
+        else:
+            print("Invalid choice, try again.")
+
 def main():
     while True:
         clear_screen()
@@ -238,6 +265,8 @@ def main():
             option_5()
         elif choice == "6":
             option_6()
+        elif choice == "7":
+            option_7()
         elif choice == "0":
             break
         else:
