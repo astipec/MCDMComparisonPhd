@@ -3,8 +3,8 @@ import os
 import numpy as np
 
 class TreeNode:
-    def __init__(self, ID, name, weight, score):
-        self.ID = ID
+    def __init__(self, code, name, weight, score):
+        self.code = code
         self.name = name
         self.weight = weight
         self.score = score
@@ -19,12 +19,93 @@ class TreeNode:
             s[child.name] = child.serialize()
         return s
 
+criteria_structure = {
+    "code": None,
+    "name": None,
+    "weight": None,
+    "children": [
+        {
+            "code": "2.1", "name": "Skill Appropriateness", "weight": 21.82, "children": [
+                {"code": "2.1.1", "name": "Available positions", "weight": 25.64},
+                {"code": "2.1.2", "name": "SKPvsESCO", "weight": 51.28},
+                {"code": "2.1.3", "name": "Other skills", "weight": 23.08, "children": [
+                    {"code": "2.1.3.1", "name": "Languages", "weight": 50.00},
+                    {"code": "2.1.3.2", "name": "Driving license", "weight": 50.00},
+                ]},
+            ]
+        },
+        {
+            "code": "2.2", "name": "Personal characteristics", "weight": 27.27, "children": [
+                {"code": "2.2.1", "name": "Age appropriateness", "weight": 42.86},
+                {"code": "2.2.2", "name": "Disability appropriateness", "weight": 42.86},
+                {"code": "2.2.3", "name": "SKP Wish", "weight": 14.29},
+            ]
+        },
+        {
+            "code": "2.3", "name": "Job appropriateness", "weight": 50.91, "children": [
+                {"code": "2.3.1", "name": "Contract type", "weight": 57.14, "children": [
+                    {"code": "2.3.1.1", "name": "JS Wishes for contract type", "weight": 42.86},
+                    {"code": "2.3.1.2", "name": "Job contract type", "weight": 57.14},
+                ]},
+                {"code": "2.3.2", "name": "Work type", "weight": 21.43, "children": [
+                    {"code": "2.3.2.1", "name": "Career advance", "weight": 33.33, "children": [
+                        {"code": "2.3.2.1.1", "name": "JS career wishes", "weight": 0.00001},
+                        {"code": "2.3.2.1.2", "name": "Job career advancement", "weight": 99.9999},
+                    ]},
+                    {"code": "2.3.2.2", "name": "Working hours", "weight": 66.67, "children": [
+                        {"code": "2.3.2.2.1", "name": "Job working hours", "weight": 50.00},
+                        {"code": "2.3.2.2.2", "name": "JS working hours wishes", "weight": 50.00},
+                    ]},
+                ]},
+                {"code": "2.3.3", "name": "Location", "weight": 21.43, "children": [
+                    {"code": "2.3.3.1", "name": "Distance to job position", "weight": 69.23},
+                    {"code": "2.3.3.2", "name": "JS wish location", "weight": 30.77},
+                ]},
+            ]
+        }
+    ]
+}
+
+def build_tree(node_dict, parent_score=None):
+    weight = node_dict.get("weight")
+    score = (weight / 100 * parent_score) if weight is not None and parent_score is not None else None
+
+    node = TreeNode(
+        code=node_dict.get("code"),
+        name=node_dict.get("name"),
+        weight=weight,
+        score=score
+    )
+
+    for child_dict in node_dict.get("children", []):
+        if score is not None:
+            child_parent_score = score
+        elif weight is not None:
+            child_parent_score = weight / 100
+        else:
+            child_parent_score = None
+
+        child_node = build_tree(child_dict, child_parent_score)
+        node.addChild(child_node)
+
+    return node
+
+def get_leaf_scores(node):
+    if not node.children:
+        return [node.score]
+    scores = []
+    for child in node.children:
+        scores.extend(get_leaf_scores(child))
+    return scores
+
+def calculate_criteria_relative_values():
+    root = build_tree(criteria_structure, parent_score=1.0)
+    CritRV = get_leaf_scores(root)
+    return CritRV
+
 def AHPReplaceValues(Alternatives: pd.DataFrame):
-    # The procedure of how the values are calculated is shown in the SKP AHP relative measures weights.xlsx file, on the Categoris sheet.
-    # For each of the 15 criteria at the bottom level, their categories are pairwise compared according to the DEX model.
-    # For example, the Available positions criteria, large is the best value, then medium and small is the worst,
-    # Categories are compared in way that large has the best score, small the worst and medium is somwhere in the middle.
-    # All other categories for all other criteria are compared in the same way.
+    # Replace qualitative values with quantitative
+    # In the Excel file (AHPQuantVal.xlsx) it is explained how are quantitative values calculated
 
     pd.set_option('future.no_silent_downcasting', True)
 
@@ -64,121 +145,9 @@ def AHPReplaceValues(Alternatives: pd.DataFrame):
 def GetAHPRankingResults(AlterAHP: pd.DataFrame):
     np.set_printoptions(precision=8)
 
-    # Calculate the criteria values from dexi weights.txt using local values.
-    # Procedure of how the weight values for the 15 bottom criteria are calculated is in the SKP AHP relative measures weights.xlsx file, on the Criteria sheet.
-    # AHP TREE STRUCTURE
-    SKP_Evaluation = TreeNode(None, None, None, None)
-
-    Skill_Appropriateness = TreeNode("2.1", "Skill Appropriateness", 21.82, None)
-    SKP_Evaluation.addChild(Skill_Appropriateness)
-
-    Personal_characteristics = TreeNode("2.2", "Personal characteristics", 27.27, None)
-    SKP_Evaluation.addChild(Personal_characteristics)
-
-    Job_appropriateness = TreeNode("2.3", "Job appropriateness", 50.91, None)
-    SKP_Evaluation.addChild(Job_appropriateness)
-
-    Available_positions = TreeNode("2.1.1", "Available positions", 25.64, None)
-    Available_positions.score = Available_positions.weight / 100 * Skill_Appropriateness.weight / 100
-    Skill_Appropriateness.addChild(Available_positions)
-
-    SKPvsESCO = TreeNode("2.1.2", "SKPvsESCO", 51.28, None)
-    SKPvsESCO.score = SKPvsESCO.weight / 100 * Skill_Appropriateness.weight / 100
-    Skill_Appropriateness.addChild(SKPvsESCO)
-
-    Other_skills = TreeNode("2.1.3", "Other skills", 23.08, None)
-    Other_skills.score = Other_skills.weight / 100 * Skill_Appropriateness.weight / 100
-    Skill_Appropriateness.addChild(Other_skills)
-
-    Languages = TreeNode("2.1.3.1", "Languages", 50.00, None)
-    Languages.score = Languages.weight / 100 * Other_skills.score
-    Other_skills.addChild(Languages)
-
-    Driving_license = TreeNode("2.1.3.2", "Driving license", 50.00, None)
-    Driving_license.score = Driving_license.weight / 100 * Other_skills.score
-    Other_skills.addChild(Driving_license)
-
-    Age_appropriateness = TreeNode("2.2.1", "Age appropriateness", 42.86, None)
-    Age_appropriateness.score = Age_appropriateness.weight / 100 * Personal_characteristics.weight / 100
-    Personal_characteristics.addChild(Age_appropriateness)
-
-    Disability_appropriateness = TreeNode("2.2.2", "Disability appropriateness", 42.86, None)
-    Disability_appropriateness.score = Disability_appropriateness.weight / 100 * Personal_characteristics.weight / 100
-    Personal_characteristics.addChild(Disability_appropriateness)
-
-    SKP_Wish = TreeNode("2.2.3", "SKP Wish", 14.29, None)
-    SKP_Wish.score = SKP_Wish.weight / 100 * Personal_characteristics.weight / 100
-    Personal_characteristics.addChild(SKP_Wish)
-
-    Contract_Type = TreeNode("2.3.1", "Contract type", 57.14, None)
-    Contract_Type.score = Contract_Type.weight / 100 * Job_appropriateness.weight / 100
-    Job_appropriateness.addChild(Contract_Type)
-
-    Work_Type = TreeNode("2.3.2", "Work type", 21.43, None)
-    Work_Type.score = Work_Type.weight / 100 * Job_appropriateness.weight / 100
-    Job_appropriateness.addChild(Work_Type)
-
-    Location = TreeNode("2.3.3", "Location", 21.43, None)
-    Location.score = Location.weight / 100 * Job_appropriateness.weight / 100
-    Job_appropriateness.addChild(Location)
-
-    JS_Wish_ContrType = TreeNode("2.3.1.1", "JS Wishes for contract type", 42.86, None)
-    JS_Wish_ContrType.score = JS_Wish_ContrType.weight / 100 * Contract_Type.score
-    Contract_Type.addChild(JS_Wish_ContrType)
-
-    Job_ContrType = TreeNode("2.3.1.2", "Job contract type", 57.14, None)
-    Job_ContrType.score = Job_ContrType.weight / 100 * Contract_Type.score
-    Contract_Type.addChild(Job_ContrType)
-
-    Career_Advance = TreeNode("2.3.2.1", "Career advance", 33.33, None)
-    Career_Advance.score = Career_Advance.weight / 100 * Work_Type.score
-    Work_Type.addChild(Career_Advance)
-
-    Working_Hours = TreeNode("2.3.2.2", "Working hours", 66.67, None)
-    Working_Hours.score = Working_Hours.weight / 100 * Work_Type.score
-    Work_Type.addChild(Working_Hours)
-
-    JS_Career_Wishes = TreeNode("2.3.2.1.1", "JS career wishes", 0.00001, None)
-    JS_Career_Wishes.score = JS_Career_Wishes.weight / 100 * Career_Advance.score
-    Career_Advance.addChild(JS_Career_Wishes)
-
-    Job_Career_Advancement = TreeNode("2.3.2.1.2", "Job career advancement", 99.9999, None)
-    Job_Career_Advancement.score = Job_Career_Advancement.weight / 100 * Career_Advance.score
-    Career_Advance.addChild(Job_Career_Advancement)
-
-    Job_Working_Hours = TreeNode("2.3.2.2.1", "Job working hours", 50.00, None)
-    Job_Working_Hours.score = Job_Working_Hours.weight / 100 * Working_Hours.score
-    Working_Hours.addChild(Job_Working_Hours)
-
-    JS_WorkingH_Wishes = TreeNode("2.3.2.2.2", "JS working hours wishes", 50.00, None)
-    JS_WorkingH_Wishes.score = JS_WorkingH_Wishes.weight / 100 * Working_Hours.score
-    Working_Hours.addChild(JS_WorkingH_Wishes)
-
-    Distance_JobPosition = TreeNode("2.3.3.1", "Distance to job position", 69.23, None)
-    Distance_JobPosition.score = Distance_JobPosition.weight / 100 * Location.score
-    Location.addChild(Distance_JobPosition)
-
-    JS_Wish_Location = TreeNode("2.3.3.2", "JS wish location", 30.77, None)
-    JS_Wish_Location.score = JS_Wish_Location.weight / 100 * Location.score
-    Location.addChild(JS_Wish_Location)
-
-    # Criteria relative values
-    CritRV = []
-    CritRV.append(Available_positions.score)
-    CritRV.append(SKPvsESCO.score)
-    CritRV.append(Languages.score)
-    CritRV.append(Driving_license.score)
-    CritRV.append(Age_appropriateness.score)
-    CritRV.append(Disability_appropriateness.score)
-    CritRV.append(SKP_Wish.score)
-    CritRV.append(JS_Wish_ContrType.score)
-    CritRV.append(Job_ContrType.score)
-    CritRV.append(JS_Career_Wishes.score)
-    CritRV.append(Job_Career_Advancement.score)
-    CritRV.append(Job_Working_Hours.score)
-    CritRV.append(JS_WorkingH_Wishes.score)
-    CritRV.append(Distance_JobPosition.score)
-    CritRV.append(JS_Wish_Location.score)
+    # Criteria local values are taken from the (dexi weights.txt) file and all are divided by 100.
+    # Values which belong to each hierarchical node are multiplied with the criteria value of that node.
+    CritRV = calculate_criteria_relative_values()
 
     print('Criteria relative values')
     print(CritRV)
@@ -250,18 +219,13 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
 
     AlterRankingsAHP_df = row_sums.to_frame('AHP')
 
-    # Print final ranking
-    print('AHP final ranking results:')
-    print(AlterRankingsAHP_df)
-    print('----------------------------------------------------------')
-
     return AlterRankingsAHP_df
 
 #Load TotalSKPData.csv
-#filename = 'SKPData_sample100.csv'  #load sample of first 100
-filename = 'TotalSKPData.csv'  #load complete TotalSKPData
+filename = 'AHP_test.csv'  #load sample of first 100
+#filename = 'TotalSKPData.csv'  #load complete TotalSKPData
 
-directory = './Results/' + filename.replace('.csv', '')
+directory = './Results'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
@@ -287,4 +251,4 @@ print('AHP final ranking results:')
 print(AHPRanking_df)
 print('----------------------------------------------------------')
 
-AHPRanking_df.to_csv(directory + '/AHPRanking_' + filename, sep=';', index=True, header=True)
+AHPRanking_df.to_csv(directory + '/AHP_Results.csv', sep=';', index=True, header=True)

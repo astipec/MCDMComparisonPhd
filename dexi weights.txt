@@ -1,0 +1,28 @@
+DEXi컴컴컴컴컴컴컴컴컴컴SKP Demo data DEX.dxi 1.2.2024.컴컴컴컴컴컴컴컴컴횾age 1
+Average weights
+Attribute컴컴컴컴컴컴컴컴컴컴컴컴컴횸ocal컴Global컴Loc.norm.컴Glob.norm.
+SKP Evaluation
+*-Skill appropriateness             21,82   21,82      38,30       38,30
+| *-Available positions             25,64    5,59      25,64        9,82
+| *-SKPvsESCO                       51,28   11,19      51,28       19,64
+| +-Other skills                    23,08    5,03      23,08        8,84
+|   *-Languages                     50,00    2,52      50,00        4,42
+|   +-Driving license               50,00    2,52      50,00        4,42
+*-Personal characteristics          27,27   27,27      31,91       31,91
+| *-Age appropriateness             42,86   11,69      42,86       13,68
+| *-Disability appropriateness      42,86   11,69      42,86       13,68
+| +-SKP Wish                        14,29    3,90      14,29        4,56
++-Job appropriateness               50,91   50,91      29,79       29,79
+  *-Contract type                   57,14   29,09      40,00       11,91
+  | *-JS wishes for contract type   42,86   12,47      60,00        7,15
+  | +-Job contract type             57,14   16,62      40,00        4,77
+  *-Work type                       21,43   10,91      30,00        8,94
+  | *-Career advance                33,33    3,64      50,00        4,47
+  | | *-JS career wishes             0,00    0,00       0,00        0,00
+  | | +-Job career advancement     100,00    3,64     100,00        4,47
+  | +-Working hours                 66,67    7,27      50,00        4,47
+  |   *-Job working hours           50,00    3,63      50,00        2,23
+  |   +-JS working hours wishes     50,00    3,63      50,00        2,23
+  +-Location                        21,43   10,91      30,00        8,94
+    *-Distance to job position      69,23    7,55      81,82        7,31
+    +-JS wish location              30,77    3,36      18,18        1,62
