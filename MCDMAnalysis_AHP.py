@@ -2,6 +2,23 @@ import pandas as pd
 import os
 import numpy as np
 
+#Names of the criteria
+col_available_positions = 'Available positions'
+col_skp_vs_esco = 'SKPvsESCO'
+col_languages = 'Languages'
+col_driving_license = 'Driving license'
+col_age = 'Age appropriateness'
+col_disability = 'Disability appropriateness'
+col_skp_wish = 'SKP Wish'
+col_js_contract_wish = 'JS wishes for contract type'
+col_job_contract = 'Job contract type'
+col_js_career = 'JS career wishes'
+col_job_advancement = 'Job career advancement'
+col_job_hours = 'Job working hours'
+col_js_hours = 'JS working hours wishes'
+col_distance = 'Distance to job position'
+col_location = 'JS wish location'
+
 class TreeNode:
     def __init__(self, code, name, weight, score):
         self.code = code
@@ -26,40 +43,40 @@ criteria_structure = {
     "children": [
         {
             "code": "2.1", "name": "Skill Appropriateness", "weight": 21.82, "children": [
-                {"code": "2.1.1", "name": "Available positions", "weight": 25.64},
-                {"code": "2.1.2", "name": "SKPvsESCO", "weight": 51.28},
+                {"code": "2.1.1", "name": col_available_positions, "weight": 25.64},
+                {"code": "2.1.2", "name": col_skp_vs_esco, "weight": 51.28},
                 {"code": "2.1.3", "name": "Other skills", "weight": 23.08, "children": [
-                    {"code": "2.1.3.1", "name": "Languages", "weight": 50.00},
-                    {"code": "2.1.3.2", "name": "Driving license", "weight": 50.00},
+                    {"code": "2.1.3.1", "name": col_languages, "weight": 50.00},
+                    {"code": "2.1.3.2", "name": col_driving_license, "weight": 50.00},
                 ]},
             ]
         },
         {
             "code": "2.2", "name": "Personal characteristics", "weight": 27.27, "children": [
-                {"code": "2.2.1", "name": "Age appropriateness", "weight": 42.86},
-                {"code": "2.2.2", "name": "Disability appropriateness", "weight": 42.86},
-                {"code": "2.2.3", "name": "SKP Wish", "weight": 14.29},
+                {"code": "2.2.1", "name": col_age, "weight": 42.86},
+                {"code": "2.2.2", "name": col_disability, "weight": 42.86},
+                {"code": "2.2.3", "name": col_skp_wish, "weight": 14.29},
             ]
         },
         {
             "code": "2.3", "name": "Job appropriateness", "weight": 50.91, "children": [
                 {"code": "2.3.1", "name": "Contract type", "weight": 57.14, "children": [
-                    {"code": "2.3.1.1", "name": "JS Wishes for contract type", "weight": 42.86},
-                    {"code": "2.3.1.2", "name": "Job contract type", "weight": 57.14},
+                    {"code": "2.3.1.1", "name": col_js_contract_wish, "weight": 42.86},
+                    {"code": "2.3.1.2", "name": col_job_contract, "weight": 57.14},
                 ]},
                 {"code": "2.3.2", "name": "Work type", "weight": 21.43, "children": [
                     {"code": "2.3.2.1", "name": "Career advance", "weight": 33.33, "children": [
-                        {"code": "2.3.2.1.1", "name": "JS career wishes", "weight": 0.00001},
-                        {"code": "2.3.2.1.2", "name": "Job career advancement", "weight": 99.9999},
+                        {"code": "2.3.2.1.1", "name": col_js_career, "weight": 0.00001},
+                        {"code": "2.3.2.1.2", "name": col_job_advancement, "weight": 99.9999},
                     ]},
                     {"code": "2.3.2.2", "name": "Working hours", "weight": 66.67, "children": [
-                        {"code": "2.3.2.2.1", "name": "Job working hours", "weight": 50.00},
-                        {"code": "2.3.2.2.2", "name": "JS working hours wishes", "weight": 50.00},
+                        {"code": "2.3.2.2.1", "name": col_job_hours, "weight": 50.00},
+                        {"code": "2.3.2.2.2", "name": col_js_hours, "weight": 50.00},
                     ]},
                 ]},
                 {"code": "2.3.3", "name": "Location", "weight": 21.43, "children": [
-                    {"code": "2.3.3.1", "name": "Distance to job position", "weight": 69.23},
-                    {"code": "2.3.3.2", "name": "JS wish location", "weight": 30.77},
+                    {"code": "2.3.3.1", "name": col_distance, "weight": 69.23},
+                    {"code": "2.3.3.2", "name": col_location, "weight": 30.77},
                 ]},
             ]
         }
@@ -107,38 +124,39 @@ def AHPReplaceValues(Alternatives: pd.DataFrame):
     # Replace qualitative values with quantitative
     # In the Excel file (AHPQuantVal.xlsx) it is explained how are quantitative values calculated
 
+    map_three = {'small': 0.06096, 'medium': 0.21577, 'large': 0.72327}
+    map_competences = {'>10': 0.06096, '5 - 10': 0.21577, '< 5 new competences': 0.72327}
+    map_yes_no = {'no': 0.09955, 'yes': 0.90045}
+    map_part_full = {'part time': 0.06096, 'full time': 0.21577, 'not important': 0.72327}
+    map_contract = {'part time': 0.09955, 'full time': 0.90045}
+    map_career = {'downgrade': 0.04767, 'same': 0.10841, 'not important': 0.25835, 'upgrade career': 0.58558}
+    map_advancement = {'down': 0.06096, 'same': 0.21577, 'up': 0.72327}
+    map_hours = {'daily/night shift': 0.04767, 'two-shift': 0.10841, 'afternoon shift': 0.25835,
+                 'morning shift': 0.58558}
+    map_distance = {'> 20 km': 0.06096, '10 - 20 km': 0.21577, '< 10 km': 0.72327}
+
+    replacement_maps = {
+        col_available_positions: map_three,
+        col_skp_vs_esco: map_competences,
+        col_languages: map_yes_no,
+        col_driving_license: map_yes_no,
+        col_age: map_yes_no,
+        col_disability: map_yes_no,
+        col_skp_wish: map_yes_no,
+        col_js_contract_wish: map_part_full,
+        col_job_contract: map_contract,
+        col_js_career: map_career,
+        col_job_advancement: map_advancement,
+        col_job_hours: map_hours,
+        col_js_hours: map_hours,
+        col_distance: map_distance,
+        col_location: map_yes_no
+    }
+
     pd.set_option('future.no_silent_downcasting', True)
 
-    Alternatives['Available positions'] = Alternatives['Available positions'].replace(['small', 'medium', 'large'],
-                                                                                      [0.06096, 0.21577,0.72327])
-    Alternatives['SKPvsESCO'] = Alternatives['SKPvsESCO'].replace(['>10', '5 - 10', '< 5 new competences'],
-                                                                  [0.06096, 0.21577, 0.72327])
-    Alternatives['Languages'] = Alternatives['Languages'].replace(['no', 'yes'],
-                                                                  [0.09955, 0.90045])
-    Alternatives['Driving license'] = Alternatives['Driving license'].replace(['no', 'yes'],
-                                                                              [0.09955, 0.90045])
-    Alternatives['Age appropriateness'] = Alternatives['Age appropriateness'].replace(['no', 'yes'],
-                                                                                      [0.09955, 0.90045])
-    Alternatives['Disability appropriateness'] = Alternatives['Disability appropriateness'].replace(['no', 'yes'],
-                                                                                                    [0.09955, 0.90045])
-    Alternatives['SKP Wish'] = Alternatives['SKP Wish'].replace(['no', 'yes'],
-                                                                [0.09955, 0.90045])
-    Alternatives['JS wishes for contract type'] = Alternatives['JS wishes for contract type'].replace(['part time', 'full time', 'not important'],
-                                                                                                      [0.06096, 0.21577, 0.72327])
-    Alternatives['Job contract type'] = Alternatives['Job contract type'].replace(['part time', 'full time'],
-                                                                                  [0.09955, 0.90045])
-    Alternatives['JS career wishes'] = Alternatives['JS career wishes'].replace(['downgrade', 'same', 'not important', 'upgrade career'],
-                                                                                [0.04767, 0.10841, 0.25835, 0.58558])
-    Alternatives['Job career advancement'] = Alternatives['Job career advancement'].replace(['down', 'same', 'up'],
-                                                                                            [0.06096, 0.21577, 0.72327])
-    Alternatives['Job working hours'] = Alternatives['Job working hours'].replace(['daily/night shift', 'two-shift', 'afternoon shift', 'morning shift'],
-                                                                                  [0.04767, 0.10841, 0.25835, 0.58558])
-    Alternatives['JS working hours wishes'] = Alternatives['JS working hours wishes'].replace(['daily/night shift', 'two-shift', 'afternoon shift', 'morning shift'],
-                                                                                              [0.04767, 0.10841, 0.25835, 0.58558])
-    Alternatives['Distance to job position'] = Alternatives['Distance to job position'].replace(['> 20 km', '10 - 20 km', '< 10 km'],
-                                                                                                [0.06096, 0.21577, 0.72327])
-    Alternatives['JS wish location'] = Alternatives['JS wish location'].replace(['no', 'yes'],
-                                                                                [0.09955, 0.90045])
+    for column, value_map in replacement_maps.items():
+        Alternatives[column] = Alternatives[column].replace(value_map)
 
     return Alternatives
 
@@ -154,21 +172,26 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
     print('----------------------------------------------------------')
 
     #Calculate weighted matrix
-    AlterAHP['Available positions'] = AlterAHP['Available positions'].multiply(CritRV[0])
-    AlterAHP['SKPvsESCO'] = AlterAHP['SKPvsESCO'].multiply(CritRV[1])
-    AlterAHP['Languages'] = AlterAHP['Languages'].multiply(CritRV[2])
-    AlterAHP['Driving license'] = AlterAHP['Driving license'].multiply(CritRV[3])
-    AlterAHP['Age appropriateness'] = AlterAHP['Age appropriateness'].multiply(CritRV[4])
-    AlterAHP['Disability appropriateness'] = AlterAHP['Disability appropriateness'].multiply(CritRV[5])
-    AlterAHP['SKP Wish'] = AlterAHP['SKP Wish'].multiply(CritRV[6])
-    AlterAHP['JS wishes for contract type'] = AlterAHP['JS wishes for contract type'].multiply(CritRV[7])
-    AlterAHP['Job contract type'] = AlterAHP['Job contract type'].multiply(CritRV[8])
-    AlterAHP['JS career wishes'] = AlterAHP['JS career wishes'].multiply(CritRV[9])
-    AlterAHP['Job career advancement'] = AlterAHP['Job career advancement'].multiply(CritRV[10])
-    AlterAHP['Job working hours'] = AlterAHP['Job working hours'].multiply(CritRV[11])
-    AlterAHP['JS working hours wishes'] = AlterAHP['JS working hours wishes'].multiply(CritRV[12])
-    AlterAHP['Distance to job position'] = AlterAHP['Distance to job position'].multiply(CritRV[13])
-    AlterAHP['JS wish location'] = AlterAHP['JS wish location'].multiply(CritRV[14])
+    columns = [
+        col_available_positions,
+        col_skp_vs_esco,
+        col_languages,
+        col_driving_license,
+        col_age,
+        col_disability,
+        col_skp_wish,
+        col_js_contract_wish,
+        col_job_contract,
+        col_js_career,
+        col_job_advancement,
+        col_job_hours,
+        col_js_hours,
+        col_distance,
+        col_location
+    ]
+
+    for col, weight in zip(columns, CritRV):
+        AlterAHP[col] = AlterAHP[col].multiply(weight)
 
     # Print the weighted matrix
     print('Weighted matrix:')
@@ -182,38 +205,31 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
     print(AlterMaxValues)
     print('----------------------------------------------------------')
 
-    #Divide values by the max value of each crtierion and multiply by criterion value
-    AlterAHP['Available positions'] = AlterAHP['Available positions'].divide(AlterMaxValues['Available positions'])
-    AlterAHP['SKPvsESCO'] = AlterAHP['SKPvsESCO'].divide(AlterMaxValues['SKPvsESCO'])
-    AlterAHP['Languages'] = AlterAHP['Languages'].divide(AlterMaxValues['Languages'])
-    AlterAHP['Driving license'] = AlterAHP['Driving license'].divide(AlterMaxValues['Driving license'])
-    AlterAHP['Age appropriateness'] = AlterAHP['Age appropriateness'].divide(AlterMaxValues['Age appropriateness'])
-    AlterAHP['Disability appropriateness'] = AlterAHP['Disability appropriateness'].divide(AlterMaxValues['Disability appropriateness'])
-    AlterAHP['SKP Wish'] = AlterAHP['SKP Wish'].divide(AlterMaxValues['SKP Wish'])
-    AlterAHP['JS wishes for contract type'] = AlterAHP['JS wishes for contract type'].divide(AlterMaxValues['JS wishes for contract type'])
-    AlterAHP['Job contract type'] = AlterAHP['Job contract type'].divide(AlterMaxValues['Job contract type'])
-    AlterAHP['JS career wishes'] = AlterAHP['JS career wishes'].divide(AlterMaxValues['JS career wishes'])
-    AlterAHP['Job career advancement'] = AlterAHP['Job career advancement'].divide(AlterMaxValues['Job career advancement'])
-    AlterAHP['Job working hours'] = AlterAHP['Job working hours'].divide(AlterMaxValues['Job working hours'])
-    AlterAHP['JS working hours wishes'] = AlterAHP['JS working hours wishes'].divide(AlterMaxValues['JS working hours wishes'])
-    AlterAHP['Distance to job position'] = AlterAHP['Distance to job position'].divide(AlterMaxValues['Distance to job position'])
-    AlterAHP['JS wish location'] = AlterAHP['JS wish location'].divide(AlterMaxValues['JS wish location'])
+    #Divide values by the max value of each criterion and multiply by criterion value
+    columns = [
+        col_available_positions,
+        col_skp_vs_esco,
+        col_languages,
+        col_driving_license,
+        col_age,
+        col_disability,
+        col_skp_wish,
+        col_js_contract_wish,
+        col_job_contract,
+        col_js_career,
+        col_job_advancement,
+        col_job_hours,
+        col_js_hours,
+        col_distance,
+        col_location
+    ]
 
-    AlterAHP['Available positions'] = AlterAHP['Available positions'].multiply(CritRV[0])
-    AlterAHP['SKPvsESCO'] = AlterAHP['SKPvsESCO'].multiply(CritRV[1])
-    AlterAHP['Languages'] = AlterAHP['Languages'].multiply(CritRV[2])
-    AlterAHP['Driving license'] = AlterAHP['Driving license'].multiply(CritRV[3])
-    AlterAHP['Age appropriateness'] = AlterAHP['Age appropriateness'].multiply(CritRV[4])
-    AlterAHP['Disability appropriateness'] = AlterAHP['Disability appropriateness'].multiply(CritRV[5])
-    AlterAHP['SKP Wish'] = AlterAHP['SKP Wish'].multiply(CritRV[6])
-    AlterAHP['JS wishes for contract type'] = AlterAHP['JS wishes for contract type'].multiply(CritRV[7])
-    AlterAHP['Job contract type'] = AlterAHP['Job contract type'].multiply(CritRV[8])
-    AlterAHP['JS career wishes'] = AlterAHP['JS career wishes'].multiply(CritRV[9])
-    AlterAHP['Job career advancement'] = AlterAHP['Job career advancement'].multiply(CritRV[10])
-    AlterAHP['Job working hours'] = AlterAHP['Job working hours'].multiply(CritRV[11])
-    AlterAHP['JS working hours wishes'] = AlterAHP['JS working hours wishes'].multiply(CritRV[12])
-    AlterAHP['Distance to job position'] = AlterAHP['Distance to job position'].multiply(CritRV[13])
-    AlterAHP['JS wish location'] = AlterAHP['JS wish location'].multiply(CritRV[14])
+    for col, weight in zip(columns, CritRV):
+        max_val = AlterMaxValues[col]
+        if max_val != 0 and pd.notnull(max_val):
+            AlterAHP[col] = AlterAHP[col].divide(max_val).multiply(weight)
+        else:
+            AlterAHP[col] = 0
 
     row_sums = AlterAHP.sum(axis=1)
 
@@ -221,8 +237,7 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
 
     return AlterRankingsAHP_df
 
-#Load TotalSKPData.csv
-filename = 'AHP_test.csv'  #load sample of first 100
+filename = 'AHP_test.csv'  #load test sample
 #filename = 'TotalSKPData.csv'  #load complete TotalSKPData
 
 directory = './Results'
