@@ -94,4 +94,4 @@ print('PAPRIKA final ranking results:')
 print(PAPRIKARanking_df)
 print('----------------------------------------------------------')
 
-PAPRIKARanking_df.to_csv(directory + '/PAPRIKARanking_' + filename, sep=';', index=True, header=True)
+PAPRIKARanking_df.to_csv(directory + '/PAPRIKA_Results.csv', sep=';', index=True, header=True)
