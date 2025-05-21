@@ -86,7 +86,7 @@ def extract_skp_evaluation(text):
         return float(match.group(1))
     return None
 
-filename = 'AHP_test.csv'  # load test sample
+filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
 #filename = 'TotalSKPData.csv'  #load complete TotalSKPData
 
 directory = './Results'

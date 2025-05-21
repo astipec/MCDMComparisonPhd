@@ -64,7 +64,7 @@ def GetPAPRIKARankingResults(Alter: pd.DataFrame):
 
     return AlterRankingsPAPRIKA_df
 
-filename = 'AHP_test.csv'  # load test sample
+filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
 #filename = 'TotalSKPData.csv'  #load complete TotalSKPData
 
 directory = './Results'

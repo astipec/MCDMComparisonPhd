@@ -152,7 +152,7 @@ def save_results_to_csv(results, filename):
 # === END OF THIRD-PARTY CODE ===
 
 def main():
-    filename = 'AHP_test.csv'  # load test sample
+    filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
     #filename = 'TotalSKPData.csv'  #load complete TotalSKPData
 
     directory = './Results'
