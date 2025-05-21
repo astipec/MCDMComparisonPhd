@@ -69,6 +69,7 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
         RankingScores = np.append(RankingScores, res)
 
     AlterRankings_df = pd.DataFrame(RankingScores, index=index_array)
+    # === END OF THIRD-PARTY CODE ===
 
     # Print final ranking
     print('DEX final ranking results:')
