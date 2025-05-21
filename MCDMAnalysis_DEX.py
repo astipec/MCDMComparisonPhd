@@ -6,6 +6,7 @@
 import pandas as pd
 import os
 import numpy as np
+import re
 
 # === START OF THIRD-PARTY CODE ===
 from DEX.dex import DEXModel
@@ -30,7 +31,7 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
 
     print("Input dictionary for DEX ranking:")
     print(result_dict)
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     # === START OF THIRD-PARTY CODE ===
     dexmodel = DEXModel('./DEX/SKP Evaluation version 3.xml', function_class=DEXFunctionGiniPop)
@@ -64,19 +65,26 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
             data_optim.add(possible_attr[i], row[i])
 
         res = dexmodel.evaluate_model(data_optim)
-        counter += 1
 
         RankingScores = np.append(RankingScores, res)
-
-    AlterRankings_df = pd.DataFrame(RankingScores, index=index_array)
     # === END OF THIRD-PARTY CODE ===
+
+    DEX_df = pd.DataFrame(RankingScores, index=index_array)
+    skp_series = DEX_df[0].apply(extract_skp_evaluation)
+    AlterRankings_df = pd.DataFrame({"DEX": skp_series})
 
     # Print final ranking
     print('DEX final ranking results:')
     print(AlterRankings_df)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     return AlterRankings_df
+
+def extract_skp_evaluation(text):
+    match = re.search(r"'SKP Evaluation'\s*:\s*array\(\[([\d\.]+)\]\)", str(text))
+    if match:
+        return float(match.group(1))
+    return None
 
 filename = 'AHP_test.csv'  # load test sample
 #filename = 'TotalSKPData.csv'  #load complete TotalSKPData
@@ -89,11 +97,11 @@ TotalSKPData_df = pd.read_csv('./'+filename, index_col=0, delimiter=';')
 
 print("TotalSKPData dataframe:")
 print(TotalSKPData_df)
-print("----------------------------------------------------------")
+print('-' * 58)
 
 # DEX RANKING
 print("DEX RANKING:")
-print("----------------------------------------------------------")
+print('-' * 58)
 
 DEXRankingScores = GetDEXRankingResults(TotalSKPData_df)
 

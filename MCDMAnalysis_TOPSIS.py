@@ -68,7 +68,7 @@ def GetTOPSISRankingResults(AlterTOPSIS: pd.DataFrame):
 
     print('Weights of the criteria')
     print(weights)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Convert DataFrame to NumPy array
     AlterArray = AlterTOPSIS.to_numpy()
@@ -89,7 +89,7 @@ def GetTOPSISRankingResults(AlterTOPSIS: pd.DataFrame):
     # Print the normalised matrix
     print('Normalised matrix:')
     print(norm_x)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Step 2 (Multiply each evaluation by the associated weight):
     # wnx is the weighted normalized x matrix
@@ -103,7 +103,7 @@ def GetTOPSISRankingResults(AlterTOPSIS: pd.DataFrame):
     # Print the weighted normalised matrix
     print('Weighted normalised matrix:')
     print(wnx)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Step 3 (positive and negative ideal solution)
     pis = array(amax(wnx, axis=0))
@@ -112,12 +112,12 @@ def GetTOPSISRankingResults(AlterTOPSIS: pd.DataFrame):
     # Print the positive ideal soluton values
     print('Positive ideal solution:')
     print(pis)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Print the negative ideal soluton values
     print('Negative ideal solution:')
     print(nis)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Step 4a: determine the distance to the positive ideal
     # solution (dpis)
@@ -142,7 +142,7 @@ def GetTOPSISRankingResults(AlterTOPSIS: pd.DataFrame):
     # Print the distance to the negative ideal solution
     print('Distance to the negative ideal solution')
     print(dnis)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Step 5: calculate the relative closeness to the ideal
     # solution
@@ -163,23 +163,23 @@ TotalSKPData_df = pd.read_csv('./'+filename, index_col=0, delimiter=';')
 
 print("TotalSKPData dataframe:")
 print(TotalSKPData_df)
-print("----------------------------------------------------------")
+print('-' * 58)
 
 # TOPSIS Ranking
 print("TOPSIS RANKING:")
-print("----------------------------------------------------------")
+print('-' * 58)
 
 TotalSKPData_RepVal = TOPSISReplaceValues(TotalSKPData_df)
 
 print("TotalSKPData Criteria categories values dataframe:")
 print(TotalSKPData_RepVal)
-print("---------------------------")
+print('-' * 58)
 
 TOPSISRanking_df = GetTOPSISRankingResults(TotalSKPData_RepVal)
 
 # Print final ranking
 print('TOPSIS final ranking results:')
 print(TOPSISRanking_df)
-print('----------------------------------------------------------')
+print('-' * 58)
 
 TOPSISRanking_df.to_csv(directory + '/TOPSIS_Results.csv', sep=';', index=True, header=True)

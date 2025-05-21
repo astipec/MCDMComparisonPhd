@@ -56,7 +56,7 @@ def GetPAPRIKARankingResults(Alter: pd.DataFrame):
 
     print('Weights of the criteria')
     print(weights)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     row_sums = Alter.sum(axis=1)
 
@@ -75,23 +75,23 @@ TotalSKPData_df = pd.read_csv('./'+filename, index_col=0, delimiter=';')
 
 print("TotalSKPData dataframe:")
 print(TotalSKPData_df)
-print("----------------------------------------------------------")
+print('-' * 58)
 
 # PAPRIKA Ranking
 print("PAPRIKA RANKING:")
-print("----------------------------------------------------------")
+print('-' * 58)
 
 TotalSKPData_RepVal = PAPRIKAReplaceValues(TotalSKPData_df)
 
 print("TotalSKPData Criteria categories values dataframe:")
 print(TotalSKPData_RepVal)
-print("---------------------------")
+print('-' * 58)
 
 PAPRIKARanking_df = GetPAPRIKARankingResults(TotalSKPData_RepVal)
 
 # Print final ranking
 print('PAPRIKA final ranking results:')
 print(PAPRIKARanking_df)
-print('----------------------------------------------------------')
+print('-' * 58)
 
 PAPRIKARanking_df.to_csv(directory + '/PAPRIKA_Results.csv', sep=';', index=True, header=True)

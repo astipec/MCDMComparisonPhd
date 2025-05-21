@@ -169,7 +169,7 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
 
     print('Criteria relative values')
     print(CritRV)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     #Calculate weighted matrix
     columns = [
@@ -196,14 +196,14 @@ def GetAHPRankingResults(AlterAHP: pd.DataFrame):
     # Print the weighted matrix
     print('Weighted matrix:')
     print(AlterAHP)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     #Determine the max value for each criterion
     AlterMaxValues = AlterAHP.max()
 
     print('Maximum value of the alternatives for each criterion.')
     print(AlterMaxValues)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     #Divide values by the max value of each criterion and multiply by criterion value
     columns = [
@@ -248,22 +248,22 @@ TotalSKPData_df = pd.read_csv('./'+filename, index_col=0, delimiter=';')
 
 print("TotalSKPData dataframe:")
 print(TotalSKPData_df)
-print("----------------------------------------------------------")
+print('-' * 58)
 
 # AHP Ranking
 print("AHP RANKING:")
-print("----------------------------------------------------------")
+print('-' * 58)
 
 TotalSKPData_RepVal = AHPReplaceValues(TotalSKPData_df)
 print("TotalSKPData Criteria categories values dataframe:")
 print(TotalSKPData_RepVal)
-print("---------------------------")
+print('-' * 58)
 
 AHPRanking_df = GetAHPRankingResults(TotalSKPData_RepVal)
 
 # Print final ranking
 print('AHP final ranking results:')
 print(AHPRanking_df)
-print('----------------------------------------------------------')
+print('-' * 58)
 
 AHPRanking_df.to_csv(directory + '/AHP_Results.csv', sep=';', index=True, header=True)

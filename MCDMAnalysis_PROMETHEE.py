@@ -165,28 +165,28 @@ def main():
 
     print("TotalSKPData dataframe:")
     print(TotalSKPData_df)
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     # PROMETHEE II Ranking
     print("PROMETHEE II RANKING:")
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     TotalSKPData_RepVal = PROMETHEEReplaceValues(TotalSKPData_df)
     print("TotalSKPData numeric dataframe:")
     print(TotalSKPData_RepVal)
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     # Convert the DataFrame to a NumPy array
     TotalSKPData_np = TotalSKPData_RepVal.to_numpy(dtype='int8')
     print(TotalSKPData_np)
-    print("----------------------------------------------------------")
+    print('-' * 58)
     print("TotalSKPData_np datatype:")
     print(TotalSKPData_np.dtype)
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     # PROMETHEE II Ranking
     print("PROMETHEE II RANKING:")
-    print("----------------------------------------------------------")
+    print('-' * 58)
 
     # Weights of the criteria (global weights from the dexi model)
     weights = array([9.82, 19.64, 4.42, 4.42, 13.68, 13.68, 4.56, 7.15, 4.77, 0, 4.47, 2.23, 2.23, 7.31, 1.62],
@@ -196,7 +196,7 @@ def main():
     print('')
     print('Weights of the criteria')
     print(weights)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Maximum and minimum values for each criterion
     pv = array(amax(TotalSKPData_np, axis=0), dtype='int8')
@@ -211,7 +211,7 @@ def main():
     print('')
     print('Minimum values for each criterion:')
     print(nv)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # preference parameters of all criteria array
     p = array([pv, nv], dtype='int8')
@@ -220,7 +220,7 @@ def main():
     print('')
     print('Preference parameters of all criteria array:')
     print(p)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # Criteria optimization array (0 for min, 1 for max)
     c = np.ones(TotalSKPData_np.shape[1], dtype=int8)
@@ -231,7 +231,7 @@ def main():
     print('')
     print('Preference function array:')
     print(d)
-    print('----------------------------------------------------------')
+    print('-' * 58)
 
     # final results
     final_net_flows = prometheeMC(TotalSKPData_np, p, c, d, weights)
