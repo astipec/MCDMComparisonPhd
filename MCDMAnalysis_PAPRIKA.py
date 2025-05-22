@@ -65,7 +65,7 @@ def GetPAPRIKARankingResults(Alter: pd.DataFrame):
     return AlterRankingsPAPRIKA_df
 
 filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
-#filename = 'TotalSKPData.csv'  #load complete TotalSKPData
+#filename = 'TotalSKPData.csv'  #load complete TotalSKPData (first run MCDMAnalysis_SKPdata.py to generate the dataset)
 
 directory = './Results'
 if not os.path.exists(directory):
