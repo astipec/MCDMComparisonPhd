@@ -1,0 +1,5 @@
+;downgrade;same;not important;upgrade career
+downgrade;1.00;0.33;0.17;0.11
+same;3.00;1.00;0.33;0.17
+not important;6.00;3.00;1.00;0.33
+upgrade career;9.00;6.00;3.00;1.00

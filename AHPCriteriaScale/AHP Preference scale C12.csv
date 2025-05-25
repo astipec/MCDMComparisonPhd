@@ -1,0 +1,5 @@
+;daily/night shift;two-shift;afternoon shift;morning shift
+daily/night shift;1.00;0.33;0.17;0.11
+two-shift;3.00;1.00;0.33;0.17
+afternoon shift;6.00;3.00;1.00;0.33
+morning shift;9.00;6.00;3.00;1.00
