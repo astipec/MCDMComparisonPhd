@@ -3,43 +3,35 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from matplotlib import gridspec
 
-def Create_Heatmap(DataFrameMatrix: pd.DataFrame, Path, name, Cmap):
-    g = sns.clustermap(
-        DataFrameMatrix,
-        annot=True,
-        fmt='.2f',
-        method="single",
-        dendrogram_ratio=0.15,
-        figsize=(8, 8),
-        row_cluster=False,
-        col_cluster=False,
-        cmap=Cmap,
-        vmin=0,
-        vmax=9
-    )
+def Create_Heatmap(DataFrameMatrix: pd.DataFrame, Path, Name, Cmap):
+    # Create a new figure with a custom grid layout for the colorbar position
+    fig = plt.figure(figsize=(10, 7))
+    gs = gridspec.GridSpec(1, 2, width_ratios=[0.1, 1], wspace=0.3)
 
-    g.ax_heatmap.yaxis.set_ticks_position("left")
-    g.ax_heatmap.yaxis.set_label_position("left")
-    g.ax_heatmap.set_ylim(len(DataFrameMatrix), 0)
-    g.ax_heatmap.yaxis.tick_left()
+    # Create the colorbar axis on the left
+    cbar_ax = fig.add_subplot(gs[0])
 
-    g.ax_row_dendrogram.set_visible(False)
-    g.ax_col_dendrogram.set_visible(False)
+    # Create the heatmap on the main axis
+    ax = fig.add_subplot(gs[1])
+    sns.heatmap(DataFrameMatrix, annot=True, cmap=Cmap, fmt=".2f", cbar=True, cbar_ax=cbar_ax, annot_kws={"size": 12})
 
-    pos = g.ax_heatmap.get_position()
-    g.ax_cbar.set_position([pos.x0 - 0.12, pos.y0, 0.02, pos.height])
+    # Customize the colorbar and axis
+    cbar_ax.yaxis.set_ticks_position('left')
+    cbar_ax.yaxis.set_label_position('left')
+    #cbar_ax.set_ylabel('Values', rotation=90, labelpad=10)
 
-    g.fig.suptitle(f'Heatmap of the AHP preference scale of "{name}" criterion', y=0.90)
+    # Remove x and y labels on the main heatmap
+    ax.set_title('Heatmap of the "' + Name + '" criterion', fontsize=14, pad=20)
+    ax.set_xlabel("")
+    ax.set_ylabel("")
 
-    plt.savefig(Path + f"/Heatmap_{name}.png", bbox_inches='tight')
+    #plt.show()
 
-    plt.savefig(Path + "/Heatmap_" + name + ".png")
+    plt.savefig(Path + "/" + Name + ".png")
     plt.clf()
     plt.close()
-
-    print("Created heatmap: " + name)
-    print('-' * 58)
 
 directory = './Results'
 if not os.path.exists(directory):

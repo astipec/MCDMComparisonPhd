@@ -68,6 +68,7 @@ def PROMETHEEReplaceValues(AlterPROMETHEE: pd.DataFrame):
 
 
 def prometheeMC(x, p, c, d, w):
+    # === START OF THIRD-PARTY CODE ===
     """Perform PROMETHEE analysis to compute net flows.
 
     Args:
@@ -81,7 +82,7 @@ def prometheeMC(x, p, c, d, w):
         ndarray: Final net flows after applying PROMETHEE method.
     """
 
-    # === START OF THIRD-PARTY CODE ===
+
     weighted_uni_net_flows = np.zeros((x.shape[1], x.shape[0]))  # Preallocate array
 
     for i in range(x.shape[1]):
