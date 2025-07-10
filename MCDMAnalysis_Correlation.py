@@ -16,25 +16,35 @@ def CalculateCorrelation(Rankings_df: pd.DataFrame, Method, Path, Name):
     return correlation_matrix
 
 def Create_Heatmap(DataFrameMatrix: pd.DataFrame, Method, Path, name, Cmap):
-    g = sns.clustermap(DataFrameMatrix, annot=True, fmt='.2f', method="single", dendrogram_ratio=0.15, figsize=(8, 8), row_cluster=True, col_cluster=True, cmap = Cmap, vmin = 0, vmax = 1)
+    index_labels = ['DEX', 'AHP', 'TOPSIS', 'PROMETHEE', 'PAPRIKA']
 
-    # Center the y-axis labels
-    g.ax_heatmap.yaxis.set_ticks_position("left")
+    df = pd.DataFrame(DataFrameMatrix, index=index_labels)
 
-    # Hide the row and column dendrograms
-    g.ax_row_dendrogram.set_visible(False)
-    g.ax_col_dendrogram.set_visible(False)
+    sorted_indices = df.mean(axis=1).sort_values().index
+    df_sorted_auto = df.loc[sorted_indices, sorted_indices]
 
-    # Move the colorbar to the left
-    g.ax_cbar.set_position((0.02, 0.2, 0.03, 0.4))
-    g.fig.suptitle("Heatmap of the " + Method + "'s correlation coefficient for the " + name)
+    plt.figure(figsize=(8, 7))
+    ax = sns.heatmap(df_sorted_auto,
+                     cmap=Cmap,
+                     annot=True,
+                     fmt=".2f",
+                     linewidths=.5,
+                     vmin=0,
+                     vmax=1,
+                     annot_kws={"size": 18})
 
+    cbar = ax.collections[0].colorbar
+    cbar.ax.tick_params(labelsize=14)
+
+    ax.tick_params(axis='x', labelsize=14)  # fontsize za X os
+    ax.tick_params(axis='y', labelsize=14)  # fontsize za Y os
+
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
+    plt.tight_layout()
     plt.savefig(Path + "/Heatmap_"+name+".png")
     plt.clf()
     plt.close()
-
-    print("Created heatmap: " + Method+"_Heatmap for the " + name)
-    print('-' * 58)
 
 def Create_ScatterPlots(Kendall_df: pd.DataFrame, Spearman_df: pd.DataFrame, Pearson_df: pd.DataFrame, directory):
     kendall = Kendall_df.loc['DEX'].drop('DEX')
@@ -125,4 +135,4 @@ Create_Heatmap(Spearman_df, "Spearman", directory, "Spearman_MCDMRankings", "coo
 Create_Heatmap(Kendall_df, "Kendall", directory, "Kendall_MCDMRankings", "coolwarm")
 
 #Create scatter line plot to display correlation metrics between DEX and other MCDM methods
-Create_ScatterPlots(Kendall_df, Spearman_df, Pearson_df, directory)
+# Create_ScatterPlots(Kendall_df, Spearman_df, Pearson_df, directory)

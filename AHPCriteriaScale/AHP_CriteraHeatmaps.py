@@ -6,29 +6,25 @@ import matplotlib.pyplot as plt
 from matplotlib import gridspec
 
 def Create_Heatmap(DataFrameMatrix: pd.DataFrame, Path, Name, Cmap):
-    # Create a new figure with a custom grid layout for the colorbar position
-    fig = plt.figure(figsize=(10, 7))
-    gs = gridspec.GridSpec(1, 2, width_ratios=[0.1, 1], wspace=0.3)
+    plt.figure(figsize=(5, 4))
+    ax = sns.heatmap(DataFrameMatrix,
+                     cmap=Cmap,
+                     annot=True,
+                     fmt=".2f",
+                     linewidths=.5,
+                     vmin=0,
+                     vmax=9,
+                     annot_kws={"size": 10})
 
-    # Create the colorbar axis on the left
-    cbar_ax = fig.add_subplot(gs[0])
+    cbar = ax.collections[0].colorbar
+    cbar.ax.tick_params(labelsize=10)
 
-    # Create the heatmap on the main axis
-    ax = fig.add_subplot(gs[1])
-    sns.heatmap(DataFrameMatrix, annot=True, cmap=Cmap, fmt=".2f", cbar=True, cbar_ax=cbar_ax, annot_kws={"size": 12})
+    ax.tick_params(axis='x', labelsize=10)  # fontsize za X os
+    ax.tick_params(axis='y', labelsize=10)  # fontsize za Y os
 
-    # Customize the colorbar and axis
-    cbar_ax.yaxis.set_ticks_position('left')
-    cbar_ax.yaxis.set_label_position('left')
-    #cbar_ax.set_ylabel('Values', rotation=90, labelpad=10)
-
-    # Remove x and y labels on the main heatmap
-    ax.set_title('Heatmap of the "' + Name + '" criterion', fontsize=14, pad=20)
-    ax.set_xlabel("")
-    ax.set_ylabel("")
-
-    #plt.show()
-
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
+    plt.tight_layout()
     plt.savefig(Path + "/" + Name + ".png")
     plt.clf()
     plt.close()
