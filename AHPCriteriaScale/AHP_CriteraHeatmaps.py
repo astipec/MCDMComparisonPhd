@@ -14,13 +14,13 @@ def Create_Heatmap(DataFrameMatrix: pd.DataFrame, Path, Name, Cmap):
                      linewidths=.5,
                      vmin=0,
                      vmax=9,
-                     annot_kws={"size": 10})
+                     annot_kws={"size": 16})
 
     cbar = ax.collections[0].colorbar
     cbar.ax.tick_params(labelsize=10)
 
-    ax.tick_params(axis='x', labelsize=10)  # fontsize za X os
-    ax.tick_params(axis='y', labelsize=10)  # fontsize za Y os
+    ax.tick_params(axis='x', labelsize=12)  # fontsize za X os
+    ax.tick_params(axis='y', labelsize=12)  # fontsize za Y os
 
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)

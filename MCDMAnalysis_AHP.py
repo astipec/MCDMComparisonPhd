@@ -131,9 +131,18 @@ def AHPReplaceValues(Alternatives: pd.DataFrame):
     map_contract = {'part time': 0.09955, 'full time': 0.90045}
     map_career = {'downgrade': 0.04767, 'same': 0.10841, 'not important': 0.25835, 'upgrade career': 0.58558}
     map_advancement = {'down': 0.06096, 'same': 0.21577, 'up': 0.72327}
-    map_hours = {'daily/night shift': 0.04767, 'two-shift': 0.10841, 'afternoon shift': 0.25835,
-                 'morning shift': 0.58558}
+    map_hours = {'daily/night shift': 0.04767, 'two-shift': 0.10841, 'afternoon shift': 0.25835, 'morning shift': 0.58558}
     map_distance = {'> 20 km': 0.06096, '10 - 20 km': 0.21577, '< 10 km': 0.72327}
+
+    #map_three = {'small': 0.16328, 'medium': 0.29742, 'large': 0.53929}
+    #map_competences = {'>10': 0.16328, '5 - 10': 0.29742, '< 5 new competences': 0.53929}
+    #map_yes_no = {'no': 0.33333, 'yes': 0.66667}
+    #map_part_full = {'part time': 0.16328, 'full time': 0.29742, 'not important': 0.53929}
+    #map_contract = {'part time': 0.33333, 'full time': 0.66667}
+    #map_career = {'downgrade': 0.06726, 'same': 0.13946, 'not important': 0.27666, 'upgrade career': 0.51662}
+    #map_advancement = {'down': 0.16328, 'same': 0.29742, 'up': 0.53929}
+    #map_hours = {'daily/night shift': 0.06726, 'two-shift': 0.13946, 'afternoon shift': 0.27666, 'morning shift': 0.51662}
+    #map_distance = {'> 20 km': 0.16328, '10 - 20 km': 0.29742, '< 10 km': 0.53929}
 
     replacement_maps = {
         col_available_positions: map_three,

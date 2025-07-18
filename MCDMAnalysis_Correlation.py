@@ -122,7 +122,7 @@ print(MCDMRankings_df)
 print('-' * 58)
 
 # Save the DataFrame to a text file
-MCDMRankings_df.to_csv(directory + '/CompleteRankings.csv', sep=';', index=True)
+MCDMRankings_df.to_csv(directory + '/CompleteRankingCorrelations.csv', sep=';', index=True)
 
 #Calculate the ranking coefficients
 Pearson_df = CalculateCorrelation(MCDMRankings_df, "pearson", directory, "Pearson_MCDMRankings")

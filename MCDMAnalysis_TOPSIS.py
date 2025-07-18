@@ -37,6 +37,16 @@ def TOPSISReplaceValues(AlterTOPSIS: pd.DataFrame):
     map_hours_topsis = {'daily/night shift': 1, 'two-shift': 2, 'afternoon shift': 3, 'morning shift': 4}
     map_distance_topsis = {'> 20 km': 1, '10 - 20 km': 2, '< 10 km': 3}
 
+    #map_three_topsis = {'small': 1, 'medium': 5, 'large': 9}
+    #map_competences_topsis = {'>10': 1, '5 - 10': 5, '< 5 new competences': 9}
+    #map_yes_no_topsis = {'no': 1, 'yes': 9}
+    #map_part_full_topsis = {'part time': 1, 'full time': 5, 'not important': 9}
+    #map_contract_topsis = {'part time': 1, 'full time': 9}
+    #map_career_topsis = {'downgrade': 1, 'same': 3, 'not important': 6, 'upgrade career': 9}
+    #map_advancement_topsis = {'down': 1, 'same': 5, 'up': 9}
+    #map_hours_topsis = {'daily/night shift': 1, 'two-shift': 3, 'afternoon shift': 6, 'morning shift': 9}
+    #map_distance_topsis = {'> 20 km': 1, '10 - 20 km': 5, '< 10 km': 9}
+
     replacement_maps_topsis = {
         col_available_positions: map_three_topsis,
         col_skp_vs_esco: map_competences_topsis,

@@ -162,7 +162,7 @@ for pair, similarity in rbo_similarities:
 rbo_matrix.to_csv(directory + '/RBO MCDM comparison.csv')
 
 #Create heatmap for RBO between methods
-Create_Heatmap(rbo_matrix, "RBO between each pair of the MCDM methods", directory, "RBO_MCDMComparison", "Blues")
+Create_Heatmap(rbo_matrix, "RBO between each pair of the MCDM methods", directory, "RBO_MCDMComparison", "coolwarm")
 
 #Calculate the rank aggregation using ScyPy
 # Sort values by alternative ID
