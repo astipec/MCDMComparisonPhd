@@ -1,0 +1,16 @@
+;Education type;Education level;Computer skills;Planning;Organization;Flexibility;Responsibility;Self-initiative;Type;Duration
+Candidate 1;no;higher;higher;higher;equal;higher;equal;equal;no;lower
+Candidate 2;no;equal;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 3;no;higher;equal;lower;lower;equal;equal;equal;no;lower
+Candidate 4;no;equal;equal;lower;equal;equal;equal;equal;no;lower
+Candidate 5;no;equal;lower;equal;equal;higher;higher;higher;no;lower
+Candidate 6;no;equal;lower;equal;equal;lower;equal;equal;no;lower
+Candidate 7;no;equal;lower;lower;lower;higher;higher;higher;no;lower
+Candidate 8;no;equal;equal;equal;equal;higher;higher;higher;no;lower
+Candidate 9;yes;higher;higher;equal;equal;higher;higher;higher;yes;equal
+Candidate 10;no;equal;equal;equal;equal;equal;equal;equal;no;lower
+Candidate 11;no;equal;higher;lower;lower;equal;equal;equal;no;lower
+Candidate 12;no;equal;equal;equal;equal;higher;higher;higher;no;lower
+Candidate 13;yes;equal;equal;equal;equal;equal;equal;equal;yes;higher
+Candidate 14;no;equal;equal;lower;lower;higher;equal;equal;no;lower
+Candidate 15;yes;higher;equal;equal;equal;equal;equal;equal;no;lower

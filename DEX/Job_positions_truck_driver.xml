@@ -1,0 +1,2179 @@
+<MODEL>
+  <SCALE>
+    <NAME>Job candidate</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>bad</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>good</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is equal to required level</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>better</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competencies is better than required</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>very good</NAME>
+      <DESCRIPTION>Some of the cadidate&apos;s competencies are higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>excellent</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is higher than required level</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Education</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>bad</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>good</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is equal to required level</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>very good</NAME>
+      <DESCRIPTION>Some of the cadidate&apos;s competencies are higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>excellent</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is higher than required level</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Education type</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>no</NAME>
+      <DESCRIPTION>Candidate does not meet required condition</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>yes</NAME>
+      <DESCRIPTION>Candidate meets required condition</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Education level</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>lower</NAME>
+      <DESCRIPTION>Candidate has competence lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>equal</NAME>
+      <DESCRIPTION>Candidate has equal level of competence to one required</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>higher</NAME>
+      <DESCRIPTION>Candidate has competence higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Qualifications</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>bad</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>good</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is equal to required level</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>excellent</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is higher than required level</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <ATTRIBUTE>
+    <NAME>Job candidate</NAME>
+    <DESCRIPTION>Best job candidate for specific job position</DESCRIPTION>
+    <SCALE>Job candidate</SCALE>
+    <FUNCTION>Job candidate</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Education</NAME>
+    <DESCRIPTION>Primary education (school/colledge) needed for job position</DESCRIPTION>
+    <PARENT>Job candidate</PARENT>
+    <SCALE>Education</SCALE>
+    <FUNCTION>Education</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Education type</NAME>
+    <DESCRIPTION>Education type (economics, proffesional driver, computer tehnician ...)</DESCRIPTION>
+    <PARENT>Education</PARENT>
+    <SCALE>Education type</SCALE>
+    <FUNCTION>Education type</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Education level</NAME>
+    <DESCRIPTION>Level of completed education (according to European Qualifications Framework)</DESCRIPTION>
+    <PARENT>Education</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Education level</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Qualifications</NAME>
+    <DESCRIPTION>Requied qualifications (driver&apos;s license and/or additional qualifications) for job position</DESCRIPTION>
+    <PARENT>Job candidate</PARENT>
+    <SCALE>Qualifications</SCALE>
+    <FUNCTION>Qualifications</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Drivers license</NAME>
+    <DESCRIPTION>Driver&apos;s license category required for job position</DESCRIPTION>
+    <PARENT>Qualifications</PARENT>
+    <SCALE>Education type</SCALE>
+    <FUNCTION>Drivers license</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Additional qualifications</NAME>
+    <DESCRIPTION>Qualifications for example: forklift operator, Code 95, truck driver ...</DESCRIPTION>
+    <PARENT>Qualifications</PARENT>
+    <SCALE>Education type</SCALE>
+    <FUNCTION>Additional qualifications</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Personal skills</NAME>
+    <DESCRIPTION>Leadership, communication, work attitude and organizational skills</DESCRIPTION>
+    <PARENT>Job candidate</PARENT>
+    <SCALE>Education</SCALE>
+    <FUNCTION>Personal skills</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Communication skill</NAME>
+    <DESCRIPTION>Required communication skills</DESCRIPTION>
+    <PARENT>Personal skills</PARENT>
+    <SCALE>Education</SCALE>
+    <FUNCTION>Communication skill</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Communication</NAME>
+    <PARENT>Communication skill</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Communication</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Listening</NAME>
+    <PARENT>Communication skill</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Listening</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Organization skill</NAME>
+    <DESCRIPTION>Required organizational skills</DESCRIPTION>
+    <PARENT>Personal skills</PARENT>
+    <SCALE>Education</SCALE>
+    <FUNCTION>Organization skill</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Planning</NAME>
+    <PARENT>Organization skill</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Planning</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Organization</NAME>
+    <PARENT>Organization skill</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Organization</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Work attitude</NAME>
+    <DESCRIPTION>Required work attitude skills</DESCRIPTION>
+    <PARENT>Personal skills</PARENT>
+    <SCALE>Education</SCALE>
+    <FUNCTION>Work attitude</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Flexibility</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Flexibility</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Responsibility</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Responsibility</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Self-initiative</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Self-initiative</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Experience</NAME>
+    <DESCRIPTION>Job experience required for job position</DESCRIPTION>
+    <PARENT>Job candidate</PARENT>
+    <SCALE>Qualifications</SCALE>
+    <FUNCTION>Experience</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Type</NAME>
+    <DESCRIPTION>In what field experience is required</DESCRIPTION>
+    <PARENT>Experience</PARENT>
+    <SCALE>Education type</SCALE>
+    <FUNCTION>Type</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Duration</NAME>
+    <DESCRIPTION>Required duration of work experience</DESCRIPTION>
+    <PARENT>Experience</PARENT>
+    <SCALE>Education level</SCALE>
+    <FUNCTION>Duration</FUNCTION>
+  </ATTRIBUTE>
+  <FUNCTION>
+    <NAME>Job candidate</NAME>
+    <ATTRLIST>Education;Qualifications;Personal skills;Experience</ATTRLIST>
+    <RULE>
+      <CONDITION>bad;bad;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;good;excellent</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;very good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;excellent;good</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;good;good</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;very good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;excellent;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;good;good</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;very good;good</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;excellent;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;very good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;excellent;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;good;good</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;very good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;excellent;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;very good;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;excellent;good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;excellent;excellent</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Education</NAME>
+    <ATTRLIST>Education type;Education level</ATTRLIST>
+    <RULE>
+      <CONDITION>no;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>no;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>no;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Qualifications</NAME>
+    <ATTRLIST>Drivers license;Additional qualifications</ATTRLIST>
+    <RULE>
+      <CONDITION>no;no</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>no;yes</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;no</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;yes</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Personal skills</NAME>
+    <ATTRLIST>Communication skill;Organization skill;Work attitude</ATTRLIST>
+    <RULE>
+      <CONDITION>bad;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;very good;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;very good;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;very good;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;excellent;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;very good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;good;excellent</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;very good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;very good;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;very good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;very good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;very good;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;excellent;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;very good</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;bad;excellent</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;very good;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;very good;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;very good;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;very good;excellent</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;bad</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;good</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;very good</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;excellent;excellent</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Communication skill</NAME>
+    <ATTRLIST>Communication;Listening</ATTRLIST>
+    <RULE>
+      <CONDITION>lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Organization skill</NAME>
+    <ATTRLIST>Planning;Organization</ATTRLIST>
+    <RULE>
+      <CONDITION>lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Work attitude</NAME>
+    <ATTRLIST>Flexibility;Responsibility;Self-initiative</ATTRLIST>
+    <RULE>
+      <CONDITION>lower;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;higher</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;equal</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Experience</NAME>
+    <ATTRLIST>Type;Duration</ATTRLIST>
+    <RULE>
+      <CONDITION>no;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>no;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>no;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>yes;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <OPTION>
+    <NAME>Candidate 1</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 2</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 3</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 4</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 5</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 6</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 7</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 8</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 9</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 10</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 11</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 12</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>yes</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 13</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 14</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 15</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Education level</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Drivers license</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Additional qualifications</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Communication</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Listening</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Planning</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Organization</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Type</ATTRIBUTE>
+      <VALUE>no</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+</MODEL>

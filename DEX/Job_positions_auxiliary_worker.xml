@@ -1,0 +1,560 @@
+<MODEL>
+  <SCALE>
+    <NAME>Employee</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>bad</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>good</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is equal to required level</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>better</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competencies is better than required</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>very good</NAME>
+      <DESCRIPTION>Some of the cadidate&apos;s competencies are higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>excellent</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is higher than required level</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Work attitude</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>bad</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>good</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is equal to required level</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>very good</NAME>
+      <DESCRIPTION>Some of the cadidate&apos;s competencies are higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>excellent</NAME>
+      <DESCRIPTION>Level of candidate&apos;s competency is higher than required level</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <SCALE>
+    <NAME>Flexibility</NAME>
+    <ORDERED>YES</ORDERED>
+    <ORDER>ASC</ORDER>
+    <SCALEVALUE>
+      <NAME>lower</NAME>
+      <DESCRIPTION>Candidate has competence lower than required</DESCRIPTION>
+      <GROUP>BAD</GROUP>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>equal</NAME>
+      <DESCRIPTION>Candidate has equal level of competence to one required</DESCRIPTION>
+    </SCALEVALUE>
+    <SCALEVALUE>
+      <NAME>higher</NAME>
+      <DESCRIPTION>Candidate has competence higher than required</DESCRIPTION>
+      <GROUP>GOOD</GROUP>
+    </SCALEVALUE>
+  </SCALE>
+  <ATTRIBUTE>
+    <NAME>Employee</NAME>
+    <DESCRIPTION>Best job candidate for specific job position</DESCRIPTION>
+    <SCALE>Employee</SCALE>
+    <FUNCTION>Employee</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Work attitude</NAME>
+    <DESCRIPTION>Required work attitude skills</DESCRIPTION>
+    <PARENT>Employee</PARENT>
+    <SCALE>Work attitude</SCALE>
+    <FUNCTION>Work attitude</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Flexibility</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Flexibility</SCALE>
+    <FUNCTION>Flexibility</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Responsibility</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Flexibility</SCALE>
+    <FUNCTION>Responsibility</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Self-initiative</NAME>
+    <PARENT>Work attitude</PARENT>
+    <SCALE>Flexibility</SCALE>
+    <FUNCTION>Self-initiative</FUNCTION>
+  </ATTRIBUTE>
+  <ATTRIBUTE>
+    <NAME>Experience duration</NAME>
+    <DESCRIPTION>Required duration of work experience</DESCRIPTION>
+    <PARENT>Employee</PARENT>
+    <SCALE>Flexibility</SCALE>
+    <FUNCTION>Experience duration</FUNCTION>
+  </ATTRIBUTE>
+  <FUNCTION>
+    <NAME>Employee</NAME>
+    <ATTRLIST>Work attitude;Experience duration</ATTRLIST>
+    <RULE>
+      <CONDITION>bad;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>bad;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>good;higher</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;equal</CONDITION>
+      <RESULT>better</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>very good;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;equal</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>excellent;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <FUNCTION>
+    <NAME>Work attitude</NAME>
+    <ATTRLIST>Flexibility;Responsibility;Self-initiative</ATTRLIST>
+    <RULE>
+      <CONDITION>lower;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;equal;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>lower;higher;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;equal;higher</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>equal;higher;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;equal</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;lower;higher</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;equal</CONDITION>
+      <RESULT>good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;equal;higher</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;lower</CONDITION>
+      <RESULT>bad</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;equal</CONDITION>
+      <RESULT>very good</RESULT>
+    </RULE>
+    <RULE>
+      <CONDITION>higher;higher;higher</CONDITION>
+      <RESULT>excellent</RESULT>
+    </RULE>
+  </FUNCTION>
+  <OPTION>
+    <NAME>Candidate 1</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 2</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 3</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 4</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 5</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 6</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 7</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 8</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 9</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 10</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 11</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 12</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 13</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 14</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>higher</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+  <OPTION>
+    <NAME>Candidate 15</NAME>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Flexibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Responsibility</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Self-initiative</ATTRIBUTE>
+      <VALUE>equal</VALUE>
+    </OPTIONVALUE>
+    <OPTIONVALUE>
+      <ATTRIBUTE>Experience duration</ATTRIBUTE>
+      <VALUE>lower</VALUE>
+    </OPTIONVALUE>
+  </OPTION>
+</MODEL>

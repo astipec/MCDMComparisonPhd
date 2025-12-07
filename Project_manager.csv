@@ -1,0 +1,16 @@
+;Education type;Education level;Foreign language type;Foreign language level;Drivers license;Computer skills;Communication;Listening;Presenting;Planning;Organization;Decision making;Supervision;Work management;Delegation of responsibility;Flexibility;Responsibility;Self-initiative;Type;Duration
+Candidate 1;no;lower;yes;equal;yes;higher;equal;equal;equal;equal;lower;lower;lower;lower;lower;equal;lower;lower;no;lower
+Candidate 2;no;lower;no;lower;no;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 3;no;lower;yes;lower;yes;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 4;no;lower;yes;lower;no;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 5;no;lower;yes;lower;yes;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 6;no;lower;no;lower;yes;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 7;no;lower;no;lower;yes;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 8;no;lower;yes;lower;yes;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 9;yes;equal;yes;lower;no;higher;equal;equal;equal;lower;lower;lower;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 10;no;lower;yes;lower;yes;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 11;no;lower;yes;lower;no;higher;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 12;no;lower;yes;lower;yes;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;equal;equal;equal;no;lower
+Candidate 13;yes;lower;yes;lower;no;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
+Candidate 14;no;lower;yes;lower;yes;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;equal;lower;lower;no;lower
+Candidate 15;yes;equal;yes;lower;no;equal;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;lower;no;lower
