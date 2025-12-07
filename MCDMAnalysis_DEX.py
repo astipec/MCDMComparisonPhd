@@ -7,6 +7,7 @@ import pandas as pd
 import os
 import numpy as np
 import re
+import matplotlib.pyplot as plt
 
 # === START OF THIRD-PARTY CODE ===
 from DEX.dex import DEXModel
@@ -34,23 +35,45 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
     print('-' * 58)
 
     # === START OF THIRD-PARTY CODE ===
-    dexmodel = DEXModel('./DEX/SKP Evaluation version 3.xml', function_class=DEXFunctionGiniPop)
+    #dexmodel = DEXModel('./DEX/SKP Evaluation version 3.xml', function_class=DEXFunctionGiniPop)
+    dexmodel = DEXModel('./DEX/Job_positions_project_manager.xml', function_class=DEXFunctionGiniPop)
 
-    possible_attr = ['Available positions',
-                     'SKPvsESCO',
-                     'Languages',
-                     'Driving licence',
-                     'Age appropriateness',
-                     'Disability appropriateness',
-                     'SKP Wish',
-                     'BO wishes for contract type',
-                     'Job contract type',
-                     'BO career wishes',
-                     'Job career advancement',
-                     'Job working hours',
-                     'BO working hours wishes',
-                     'MSO Upravna Enota',
-                     'BO wish location']
+    #possible_attr = ['Available positions',
+    #                 'SKPvsESCO',
+    #                 'Languages',
+    #                 'Driving licence',
+    #                 'Age appropriateness',
+    #                 'Disability appropriateness',
+    #                 'SKP Wish',
+    #                 'BO wishes for contract type',
+    #                 'Job contract type',
+    #                 'BO career wishes',
+    #                 'Job career advancement',
+    #                 'Job working hours',
+    #                 'BO working hours wishes',
+    #                 'MSO Upravna Enota',
+    #                 'BO wish location']
+
+    possible_attr = ['Education type',
+                     'Education level',
+                     'Foreign language type',
+                     'Foreign language level',
+                     'Drivers license',
+                     'Computer skills',
+                     'Communication',
+                     'Listening',
+                     'Presenting',
+                     'Planning',
+                     'Organization',
+                     'Decision making',
+                     'Supervision',
+                     'Work management',
+                     'Delegation of responsibility',
+                     'Flexibility',
+                     'Responsibility',
+                     'Self-initiative',
+                     'Type',
+                     'Duration']
 
     optim_space = list(result_dict.values())
     data_optim = MyDictionary()
@@ -69,6 +92,8 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
         RankingScores = np.append(RankingScores, res)
     # === END OF THIRD-PARTY CODE ===
 
+    print(RankingScores)
+
     DEX_df = pd.DataFrame(RankingScores, index=index_array)
     skp_series = DEX_df[0].apply(extract_skp_evaluation)
     AlterRankings_df = pd.DataFrame({"DEX": skp_series})
@@ -81,13 +106,34 @@ def GetDEXRankingResults(AlterDEX: pd.DataFrame):
     return AlterRankings_df
 
 def extract_skp_evaluation(text):
-    match = re.search(r"'SKP Evaluation'\s*:\s*array\(\[([\d\.]+)\]\)", str(text))
+    #match = re.search(r"'SKP Evaluation'\s*:\s*array\(\[([\d\.]+)\]\)", str(text))
+    match = re.search(r"'Job candidate'\s*:\s*array\(\[([\d\.]+)\]\)", str(text))
     if match:
         return float(match.group(1))
     return None
 
-filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
+
+def plot_dex_barh(df, column="DEX", title="", save_path=None):
+    values = df[column]
+
+    plt.figure(figsize=(10, 8))
+    values.plot(kind="barh", color="steelblue")
+
+    plt.xlabel(column)
+    plt.title(title)
+    plt.gca().invert_yaxis()
+
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+
+    plt.show()
+
+
+#filename = 'AHP_test.csv'  # load test sample (this is small sample of data for testing purposes)
 #filename = 'TotalSKPData.csv'  #load complete TotalSKPData (first run MCDMAnalysis_SKPdata.py to generate the dataset)
+filename = 'Project_manager.csv'  #load complete TotalSKPData (first run MCDMAnalysis_SKPdata.py to generate the dataset)
 
 directory = './Results'
 if not os.path.exists(directory):
@@ -106,4 +152,6 @@ print('-' * 58)
 DEXRankingScores = GetDEXRankingResults(TotalSKPData_df)
 
 # Export DataFrame to a csv file
-DEXRankingScores.to_csv(directory + '/DEX_Results.csv', sep=';', index=True, header=True)
+DEXRankingScores.to_csv(directory + '/DEX_Results_Project_Manager.csv', sep=';', index=True, header=True)
+
+plot_dex_barh(DEXRankingScores, save_path=directory)
