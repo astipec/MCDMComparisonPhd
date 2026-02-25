@@ -12,7 +12,7 @@ def Create_ScatterPlots(MCDMRankings_df, directory, sample_size=1000):
 
     g = sns.pairplot(MCDMRankings_df, plot_kws={"alpha": 0.6, "s": 10})
     plt.tight_layout()
-    g.savefig(f"{directory}/MCDMScatterPlot.png")
+    g.savefig(f"{directory}/ProjectManager_MCDMScatterPlot.png")
     plt.clf()
     plt.close()
 
@@ -22,12 +22,49 @@ directory = './Results'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
+'''
 ranking_files = {
-    'DEX': 'DEX_Results.csv',
-    'AHP': 'AHP_Results.csv',
-    'TOPSIS': 'TOPSIS_Results.csv',
-    'PROMETHEE': 'PROMETHEE_Results.csv',
-    'PAPRIKA': 'PAPRIKA_Results.csv'
+    'DEX': 'SKP_DEX_Results.csv',
+    'AHP': 'SKP_AHP_Results.csv',
+    'TOPSIS': 'SKP_TOPSIS_Results.csv',
+    'PROMETHEE': 'SKP_PROMETHEE_Results.csv',
+    'PAPRIKA': 'SKP_PAPRIKA_Results.csv'
+}
+'''
+'''
+ranking_files = {
+    'DEX': 'DEX_Results_TruckDriver.csv',
+    'AHP': 'AHP_Results_TruckDriver.csv',
+    'TOPSIS': 'TOPSIS_Results_TruckDriver.csv',
+    'PROMETHEE': 'PROMETHEE_Results_TruckDriver.csv',
+    'PAPRIKA': 'PAPRIKA_Results_TruckDriver.csv'
+}
+'''
+'''
+ranking_files = {
+    'DEX': 'DEX_Results_Accountant.csv',
+    'AHP': 'AHP_Results_Accountant.csv',
+    'TOPSIS': 'TOPSIS_Results_Accountant.csv',
+    'PROMETHEE': 'PROMETHEE_Results_Accountant.csv',
+    'PAPRIKA': 'PAPRIKA_Results_Accountant.csv'
+}
+'''
+'''
+ranking_files = {
+    'DEX': 'DEX_Results_AuxiliaryWorker.csv',
+    'AHP': 'AHP_Results_AuxiliaryWorker.csv',
+    'TOPSIS': 'TOPSIS_Results_AuxiliaryWorker.csv',
+    'PROMETHEE': 'PROMETHEE_Results_AuxiliaryWorker.csv',
+    'PAPRIKA': 'PAPRIKA_Results_AuxiliaryWorker.csv'
+}
+'''
+
+ranking_files = {
+    'DEX': 'DEX_Results_ProjectManager.csv',
+    'AHP': 'AHP_Results_ProjectManager.csv',
+    'TOPSIS': 'TOPSIS_Results_ProjectManager.csv',
+    'PROMETHEE': 'PROMETHEE_Results_ProjectManager.csv',
+    'PAPRIKA': 'PAPRIKA_Results_ProjectManager.csv'
 }
 
 ranking_dfs = {}
@@ -50,6 +87,6 @@ print(MCDMRankings_df)
 print('-' * 58)
 
 # Save the DataFrame to a text file
-MCDMRankings_df.to_csv(directory + '/CompleteRankingScatter.csv', sep=';', index=True)
+MCDMRankings_df.to_csv(directory + '/ProjectManager_CompleteRankingScatter.csv', sep=';', index=True)
 
 Create_ScatterPlots(MCDMRankings_df, directory)
